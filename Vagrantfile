@@ -84,7 +84,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.define 'gateway' do |config|
-    config.vm.box = 'general/ubuntu-20.04'
+    config.vm.box = 'generic/ubuntu2004'
     config.vm.provider :libvirt do |lv|
       lv.memory = 8192
     end
