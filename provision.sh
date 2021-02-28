@@ -153,7 +153,7 @@ EOF
 
 if [ "$cluster_ip" == "$cluster_network_first_node_ip" ]; then
     # configure the keyboard.
-    echo 'keyboard: en' >>/etc/pve/datacenter.cfg
+    echo 'keyboard: en-us' >>/etc/pve/datacenter.cfg
 
     # list the gateway nfs shares.
     pvesm scan nfs $gateway_ip
