@@ -196,5 +196,5 @@ expect "Are you sure you want to continue connecting (yes/no)? "; send "yes\\r"
 expect eof
 EOF
 fi
-pvecm status || true
-pvecm nodes
+#pvecm status || true
+#pvecm nodes
