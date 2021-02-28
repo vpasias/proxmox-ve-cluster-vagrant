@@ -8,6 +8,7 @@ fqdn=$(hostname --fqdn)
 export DEBIAN_FRONTEND=noninteractive
 
 # show cluster status.
+sleep 60
 pvecm status || true
 pvecm nodes
 
