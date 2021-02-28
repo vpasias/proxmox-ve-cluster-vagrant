@@ -13,9 +13,9 @@ pvecm nodes
 
 # show storage status.
 pvesm status
-pveceph lspools
-ceph -s
-ceph osd tree
+#pveceph lspools
+#ceph -s
+#ceph osd tree
 
 # show running containers.
 pct list
