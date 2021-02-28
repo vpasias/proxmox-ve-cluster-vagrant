@@ -8,7 +8,7 @@ dn=$(hostname)
 
 # only continue if we are running in the 2nd node (our ceph storage pool
 # needs, at minimum two replicas available, for creating/writing to a disk).
-if [[ "$dn" != 'pve2' ]]; then
+if [[ "$dn" != 'pve1' ]]; then
     exit 0
 fi
 
