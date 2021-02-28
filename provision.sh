@@ -153,7 +153,7 @@ EOF
 
 if [ "$cluster_ip" == "$cluster_network_first_node_ip" ]; then
     # configure the keyboard.
-    echo 'keyboard: pt' >>/etc/pve/datacenter.cfg
+    echo 'keyboard: en' >>/etc/pve/datacenter.cfg
 
     # list the gateway nfs shares.
     pvesm scan nfs $gateway_ip
@@ -192,6 +192,7 @@ expect -re "Please enter superuser (root) password for .+:"; send "vagrant\\r"
 expect "Are you sure you want to continue connecting (yes/no)? "; send "yes\\r"
 expect eof
 EOF
+sleep 60
 fi
 pvecm status || true
 pvecm nodes
