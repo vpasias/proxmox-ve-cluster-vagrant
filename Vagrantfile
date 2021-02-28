@@ -31,7 +31,7 @@ Vagrant.configure('2') do |config|
     lv.cpus = 4
     lv.cpu_mode = 'host-passthrough'
     lv.nested = true
-    lv.keymap = 'pt'
+    lv.keymap = 'en'
     config.vm.synced_folder '.', '/vagrant', type: 'nfs', nfs_version: 4
   end
 
