@@ -60,7 +60,7 @@ if [ "$storage_ip" == "$storage_network_first_node_ip" ]; then
         --pool $pve_pool_name \
         --username admin
 else
-    pveceph init --network $storage_network
+#    pveceph init --network $storage_network
     pveceph createmon
 fi
 
