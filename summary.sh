@@ -9,11 +9,11 @@ export DEBIAN_FRONTEND=noninteractive
 
 # show cluster status.
 sleep 60
-pvecm status || true
-pvecm nodes
+#pvecm status || true
+#pvecm nodes
 
 # show storage status.
-pvesm status
+#pvesm status
 #pveceph lspools
 #ceph -s
 #ceph osd tree
