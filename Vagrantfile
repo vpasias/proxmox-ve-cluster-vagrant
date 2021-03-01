@@ -166,12 +166,12 @@ Vagrant.configure('2') do |config|
         ]
       config.vm.provision :reload
       config.vm.provision :shell, path: 'provision-pveproxy-certificate.sh', args: service_ip
-#      config.vm.provision :shell, path: 'provision-storage.sh', args: [
-#          storage_network_first_node_ip,
-#          storage_network,
-#          storage_ip,
-#          storage_monitor_ips
-#        ]
+      config.vm.provision :shell, path: 'provision-storage.sh', args: [
+          storage_network_first_node_ip,
+          storage_network,
+          storage_ip,
+          storage_monitor_ips
+        ]
 #      config.vm.provision :shell, path: 'provision-alpine-template-container.sh', args: [service_ip, gateway_ip]
 #      config.vm.provision :shell, path: 'provision-debian-live-virtual-machine.sh', args: gateway_ip
       config.vm.provision :shell, path: 'summary.sh', args: service_ip
