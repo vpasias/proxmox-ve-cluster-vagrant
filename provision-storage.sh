@@ -13,9 +13,6 @@ else
     osd_disk_device='/dev/sdb'
 fi
 
-# install ceph.
-yes | pveceph install
-
 # create the ceph cluster.
 # see https://pve.proxmox.com/wiki/Ceph_Server
 # see https://pve.proxmox.com/wiki/Storage:_RBD
@@ -24,6 +21,10 @@ yes | pveceph install
 # see https://pve.proxmox.com/pve-docs/pvesm.1.html
 # run pveceph help createpool
 if [ "$storage_ip" == "$storage_network_first_node_ip" ]; then
+
+    # install ceph.
+    yes | pveceph install
+
     # initialize ceph.
     pveceph init --network $storage_network
     pveceph createmon
@@ -59,10 +60,21 @@ if [ "$storage_ip" == "$storage_network_first_node_ip" ]; then
         --krbd 0 \
         --pool $pve_pool_name \
         --username admin
+        
+    # create an OSD in a disk.  
+    pveceph createosd $osd_disk_device
 else
+
+# install ceph.
+#yes | pveceph install
+
 #    pveceph init --network $storage_network
-    pveceph createmon
-fi
+#    pveceph createmon
 
 # create an OSD in a disk.
-pveceph createosd $osd_disk_device
+#pveceph createosd $osd_disk_device
+fi
+
+uname -a
+df -hT
+sudo lsblk
