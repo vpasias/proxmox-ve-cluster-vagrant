@@ -63,6 +63,9 @@ if [ "$storage_ip" == "$storage_network_first_node_ip" ]; then
         
     # create an OSD in a disk.  
     pveceph createosd $osd_disk_device
+    
+    sudo lsblk
+    
 else
 
 # install ceph.
@@ -73,8 +76,10 @@ else
 
 # create an OSD in a disk.
 #pveceph createosd $osd_disk_device
+
+sudo lsblk
+
 fi
 
 uname -a
 df -hT
-sudo lsblk
