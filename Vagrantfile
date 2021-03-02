@@ -27,8 +27,8 @@ end.join(';')
 Vagrant.configure('2') do |config|
   config.vm.box = 'proxmox-ve-amd64'
   config.vm.provider :libvirt do |lv, config|
-    lv.memory = 16*1024
-    lv.cpus = 4
+    lv.memory = 32*1024
+    lv.cpus = 8
     lv.cpu_mode = 'host-passthrough'
     lv.nested = true
     lv.keymap = 'en-us'
@@ -37,8 +37,8 @@ Vagrant.configure('2') do |config|
 
   config.vm.provider :virtualbox do |vb|
     vb.linked_clone = true
-    vb.memory = 16*1024
-    vb.cpus = 4
+    vb.memory = 32*1024
+    vb.cpus = 8
     vb.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
     vb.customize ['modifyvm', :id, '--nicpromisc2', 'allow-all']
   end
@@ -46,8 +46,8 @@ Vagrant.configure('2') do |config|
   config.vm.provider :hyperv do |hv, config|
     hv.linked_clone = true
     hv.enable_virtualization_extensions = true # nested virtualization.
-    hv.memory = 3*1024
-    hv.cpus = 4
+    hv.memory = 32*1024
+    hv.cpus = 8
     hv.vlan_id = ENV['HYPERV_VLAN_ID']
     # set the management network adapter.
     # see https://github.com/hashicorp/vagrant/issues/7915
