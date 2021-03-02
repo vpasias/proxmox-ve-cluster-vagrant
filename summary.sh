@@ -9,15 +9,20 @@ dn=$(hostname)
 export DEBIAN_FRONTEND=noninteractive
 
 # show cluster status.
-sleep 60
-#pvecm status || true
-#pvecm nodes
+sleep 10
+
+if [[ "$dn" == 'pve1' ]]; then
+
+pvecm status || true
+pvecm nodes
 
 # show storage status.
-#pvesm status
-#pveceph lspools
-#ceph -s
-#ceph osd tree
+pvesm status
+pveceph lspools
+ceph -s
+ceph osd tree
+
+fi
 
 # show running containers.
 pct list
