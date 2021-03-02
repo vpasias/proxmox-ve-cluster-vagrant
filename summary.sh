@@ -3,6 +3,7 @@ set -eux
 
 ip=$1
 fqdn=$(hostname --fqdn)
+dn=$(hostname)
 
 # configure apt for non-interactive mode.
 export DEBIAN_FRONTEND=noninteractive
