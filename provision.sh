@@ -190,12 +190,12 @@ else
     #   pve2: Are you sure you want to continue connecting (yes/no)? 
     expect <<EOF
 #spawn pvecm add $cluster_network_first_node_ip -nodeid $node_id -link0 $cluster_ip
-spawn pvecm add 10.2.0.201
+spawn sudo pvecm add 10.2.0.201
 #sleep 60
 expect -re "Please enter superuser (root) password for .+:"; send "vagrant\\r"
 expect "Are you sure you want to continue connecting (yes/no)? "; send "yes\\r"
 expect eof
 EOF
 fi
-pvecm status || true
-pvecm nodes
+sudo pvecm status || true
+sudo pvecm nodes
