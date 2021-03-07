@@ -1,4 +1,5 @@
 #!/bin/bash
+# https://pve.proxmox.com/wiki/Deploy_Hyper-Converged_Ceph_Cluster
 set -eux
 
 storage_network_first_node_ip=$1
