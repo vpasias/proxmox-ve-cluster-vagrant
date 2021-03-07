@@ -69,13 +69,13 @@ if [ "$storage_ip" == "$storage_network_first_node_ip" ]; then
 else
 
 # install ceph.
-#yes | pveceph install
-
-#    pveceph init --network $storage_network
-#    pveceph createmon
+#yes | sudo pveceph install
+# pveceph mgr create
+#    sudo pveceph init --network $storage_network
+#    sudo pveceph createmon
 
 # create an OSD in a disk.
-#pveceph createosd $osd_disk_device
+# sudo pveceph createosd $osd_disk_device
 
 sudo lsblk
 
