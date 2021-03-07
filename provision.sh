@@ -60,10 +60,18 @@ EOF
 cat >/etc/resolv.conf <<EOF
 nameserver $gateway_ip
 EOF
+if [ "$cluster_ip" == "$cluster_network_first_node_ip" ]; then
 cat >/etc/hosts <<EOF
 127.0.0.1 localhost.localdomain localhost
 $ip $fqdn $dn pvelocalhost
 EOF
+else
+cat >/etc/hosts <<EOF
+10.2.0.201 pve1
+127.0.0.1 localhost.localdomain localhost
+$ip $fqdn $dn pvelocalhost
+EOF
+fi
 sed 's,\\,\\\\,g' >/etc/issue <<'EOF'
 
      _ __  _ __ _____  ___ __ ___   _____  __ __   _____
@@ -190,7 +198,8 @@ else
     #   pve2: Are you sure you want to continue connecting (yes/no)? 
     expect <<EOF
 #spawn pvecm add $cluster_network_first_node_ip -nodeid $node_id -link0 $cluster_ip
-spawn sudo pvecm add 10.2.0.201
+#spawn sudo pvecm add 10.2.0.201
+spawn sudo pvecm add pve1.example.com
 #sleep 60
 expect -re "Please enter superuser (root) password for .+:"; send "vagrant\\r"
 expect "Are you sure you want to continue connecting (yes/no)? "; send "yes\\r"
