@@ -126,13 +126,13 @@ Vagrant.configure('2') do |config|
     config.vm.define name do |config|
       config.vm.hostname = fqdn
       config.vm.provider :libvirt do |lv|
-        lv.storage :file, :size => '30G'
+        lv.storage :file, :size => '60G'
       end
       config.vm.provider :virtualbox do |vb, override|
-        override.vm.disk :disk, size: '30GB', name: 'data'
+        override.vm.disk :disk, size: '60GB', name: 'data'
       end
       config.vm.provider :hyperv do |hv, override|
-        override.vm.disk :disk, size: '30GB', name: 'data'
+        override.vm.disk :disk, size: '60GB', name: 'data'
       end
       config.vm.network :private_network,
         ip: service_ip,
@@ -172,8 +172,8 @@ Vagrant.configure('2') do |config|
           storage_ip,
           storage_monitor_ips
         ]
-#      config.vm.provision :shell, path: 'provision-alpine-template-container.sh', args: [service_ip, gateway_ip]
-#      config.vm.provision :shell, path: 'provision-debian-live-virtual-machine.sh', args: gateway_ip
+      config.vm.provision :shell, path: 'provision-alpine-template-container.sh', args: [service_ip, gateway_ip]
+      config.vm.provision :shell, path: 'provision-debian-live-virtual-machine.sh', args: gateway_ip
       config.vm.provision :shell, path: 'summary.sh', args: service_ip
     end
   end
